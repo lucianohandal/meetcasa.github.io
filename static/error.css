@@ -1,0 +1,42 @@
+/*colors: eeeeee 32e0c4 393e46 222831*/
+/* .body {
+  font-family: 'Montserrat', sans-serif;
+} */
+body{
+  background-color: #393e46;
+  padding-top: 4.5rem;
+  padding-bottom: 10rem;
+}
+
+h1, h2, h3, h4, h5, h6, p, small, label, button{
+  font-family: 'Montserrat', sans-serif;
+  color: #eeeeee;
+}
+
+hr{
+  border-color: #eeeeee;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  color: #32e0c4;
+}
+
+h1 {
+  font-size: 6rem;
+  color: #32e0c4;
+}
+
+#navbar {
+  width: 100vw;
+  background-color: #393e46;
+}
+
+#main_div {
+  height: 70vh;
+  max-width: 34rem;
+}
+
+#main_div a {
+  font-weight: bold;
+}

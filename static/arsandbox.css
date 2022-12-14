@@ -1,0 +1,70 @@
+/*colors: eeeeee 32e0c4 393e46 222831*/
+/* .body {
+  font-family: 'Montserrat', sans-serif;
+} */
+body{
+  background-color: #393e46;
+  padding-top: 4.5rem;
+  padding-bottom: 10rem;
+}
+
+h1, h2, h3, h4, h5, h6, p, small, label, button{
+  font-family: 'Montserrat', sans-serif;
+  color: #eeeeee;
+}
+
+hr{
+  border-color: #eeeeee;
+}
+
+a {
+  font-family: 'Montserrat', sans-serif;
+  color: #32e0c4;
+}
+
+h1, h2 {
+  color: #32e0c4;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+#navbar {
+  width: 100vw;
+  background-color: #393e46;
+}
+
+.modal-content{
+  background-color: #393e46;
+}
+
+.close{
+  color: white;
+}
+
+.modal-footer button {
+  width: 80%;
+}
+
+#campriley_img{
+  max-width: 14rem;
+}
+
+@media (max-width: 576px) {
+  body {
+    padding-top: 3.5rem;
+  }
+  img{
+    width: 100%;
+  }
+  #campriley_img{
+    width: 60%;
+  }
+}
+
+@media (min-width: 576px) {
+  img{
+    width: 60%;
+  }
+}

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- Custom CSS -->
-  <link rel="StyleSheet" href="{{ url_for('static', filename='portfolio.css') }}" />
+  <link rel="StyleSheet" href="static/portfolio.css" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/6b9101bbf3.js" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
   <meta property="og:title" content="Luciano Handal" />
   <meta property="og:url" content="https://www.lucianohandal.com/" />
   <!-- <meta property="og:description" content="Aspiring Computer Scientist"> -->
-  <meta property="og:image" content="{{ url_for('static', filename='projects/portfolio.jpg') }}">
+  <meta property="og:image" content="static/projects/portfolio.jpg">
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
 </head>
@@ -80,7 +80,7 @@
         </div>
         <div class="col-12 col-sm-4 col-lg-3">
           <div class="d-none d-sm-flex flex-column justify-content-around w-100 h-100">
-            <a class="text-right" href="{{ url_for('static', filename='docs/resume.pdf') }}" target="_blank">Resume <i class="fas fa-file"></i></a>
+            <a class="text-right" href="static/docs/resume.pdf" target="_blank">Resume <i class="fas fa-file"></i></a>
             <a class="text-right" href="http://www.linkedin.com/in/lucianohandal/" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a>
             <a class="text-right" href="https://github.com/lucianohandal/" target="_blank">GitHub <i class="fab fa-github"></i></a>
           </div>
@@ -141,9 +141,9 @@
               <div class="col-12 col-sm-6">
                 <h5><span>Software</span></h5>
                 <p class="mb-0">
-                  <span>C</span>, <span>C++</span>, <span>Java</span>, <span>Python</span> and <span>JavaScript</span> programming languages<br>
+                  <span>C</span>, <span>C++</span>, <span>Java</span>, <span>Python</span>, <span>Swift</span> and <span>JavaScript</span> programming languages<br>
+                  <span>SQL</span> and <span>NoSQL</span> database management language<br>
                   <span>HTML</span> markup language and <span>CSS</span> style sheet language<br>
-                  <span>SQL</span> database management language<br>
                   <span>x86</span> assembly language<br>
                   User experience, user interphase and graphic design
                 </p>
@@ -161,7 +161,7 @@
         </div>
       </div>
       <div class="d-flex d-sm-none justify-content-around my-5 w-100 h-100">
-        <a class="text-center" href="{{ url_for('static', filename='docs/resume.pdf') }}" target="_blank">Resume <i class="fas fa-file"></i></a>
+        <a class="text-center" href="static/docs/resume.pdf" target="_blank">Resume <i class="fas fa-file"></i></a>
         <a class="text-center" href="http://www.linkedin.com/in/lucianohandal/" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a>
         <a class="text-center" href="https://github.com/lucianohandal/" target="_blank">GitHub <i class="fab fa-github"></i></a>
       </div>
@@ -204,7 +204,7 @@
             <a class="btn btn-outline-light text-center" href="https://www.easya.app" target="_blank">Check It Out</a>
           </div>
           <div class="project d-flex justify-content-center">
-            <!-- <img src="{{ url_for('static', filename='projects/easya.jpg') }}" alt="easyA"> -->
+            <!-- <img src="static/projects/easya.jpg" alt="easyA"> -->
           </div>
           <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
             <p class="text-center">easyA</p>
@@ -220,17 +220,17 @@
             <small class="text-center p-3">
               Augmented Reality (AR) Sandbox crafted for Camp Riley.
             </small>
-            <a class="btn btn-outline-light text-center" href="{{ url_for('arsandbox') }}" target="_blank">Check It Out</a>
+            <a class="btn btn-outline-light text-center" href="arsandbox.html" target="_blank">Check It Out</a>
           </div>
           <div class="project d-flex justify-content-center">
-            <!-- <img src="{{ url_for('static', filename='projects/arsandbox.jpg') }}" alt="AR Sandbox"> -->
+            <!-- <img src="static/projects/arsandbox.jpg" alt="AR Sandbox"> -->
           </div>
           <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
             <p class="text-center">AR Sandbox</p>
             <small>
               Augmented Reality (AR) Sandbox crafted for Camp Riley.
             </small>
-            <a class="text-center" href="{{ url_for('arsandbox') }}" target="_blank">Check It Out</a>
+            <a class="text-center" href="arsandbox.html" target="_blank">Check It Out</a>
           </div>
         </div>
         <div id="msrona" class="project_div col-12 col-sm-6 col-lg-4">
@@ -242,7 +242,7 @@
             <a class="btn btn-outline-light text-center" href="https://github.com/lhandalb/covid-bot" target="_blank">Go To Repository</a>
           </div>
           <div class="project">
-            <!-- <img class="png_img" src="{{ url_for('static', filename='projects/msrona.png') }}" alt="Ms Rona"> -->
+            <!-- <img class="png_img" src="static/projects/msrona.png" alt="Ms Rona"> -->
           </div>
           <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
             <p class="text-center">Ms Rona</p>
@@ -262,7 +262,7 @@
             <a class="btn btn-outline-light text-center" href="https://github.com/lhandalb/tinderBot" target="_blank">Go To Repository</a>
           </div>
           <div class="project d-flex justify-content-center">
-            <!-- <img src="{{ url_for('static', filename='projects/tinderbot.jpg') }}" alt="Tinder Bot"> -->
+            <!-- <img src="static/projects/tinderbot.jpg" alt="Tinder Bot"> -->
           </div>
           <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
             <p class="text-center">Tinder Bot</p>
@@ -280,7 +280,7 @@
             <a class="btn btn-outline-light text-center" href="https://github.com/lhandalb/portfolio" target="_blank">Go To Repository</a>
           </div>
           <div class="project d-flex justify-content-center">
-            <!-- <img src="{{ url_for('static', filename='projects/portfolio.jpg') }}" alt="Portfolio"> -->
+            <!-- <img src="static/projects/portfolio.jpg" alt="Portfolio"> -->
           </div>
           <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
             <p class="text-center">This</p>
@@ -347,7 +347,7 @@
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="{{ url_for('static', filename='portfolio.js') }}"></script>
+  <script src="static/portfolio.js"></script>
   <script type="text/javascript"> getVars('{{loc}}') </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

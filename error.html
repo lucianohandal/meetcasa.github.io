@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- Custom CSS -->
-  <link rel="StyleSheet" href="{{ url_for('static', filename='error.css') }}" />
+  <link rel="StyleSheet" href="static/error.css" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/6b9101bbf3.js" crossorigin="anonymous"></script>
@@ -45,7 +45,7 @@
       <h1 class="text-center m-0">{{error['code']}}</h1>
       <h2 class="text-center mb-4">{{error['name']}}</h2>
       <p class="text-justify">{{error['description']}}</p>
-      <p class="text-right"><a href="{{ url_for('index') }}"> Go Back</a></p>
+      <p class="text-right"><a href="https://lucianohandal.github.io/"> Go Back</a></p>
 
     </div>
   </div>
