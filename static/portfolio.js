@@ -2,7 +2,7 @@ const body = $('body')[0];
 const navbar = $("#navbar")[0];
 const nav_items = $('.nav-item');
 const hello_h1 = $("#hello_world")[0];
-const url = document.URL;
+const url = document.URL.split("?")[0];
 const hello_msg = "Hello World!";
 const hello_msg_html = "Hello World!<span id='new_line'>\\n</span>";
 const projects = $('.project_div');
@@ -13,11 +13,7 @@ var current_color = '#222831';
 var sectionOffsets;
 var sectNum = {};
 var current_project = 0;
-var loc;
-
-function getVars(location) {
-  loc = location;
-}
+var loc = document.URL.split("?")[1];
 
 function getSectionsOffsets(){
   sectionOffsets = [];
@@ -107,7 +103,7 @@ function copyToClipboard(str) {
 function share(){
   let share_link = url;
   if (current_section != 'hello') {
-    share_link += current_section;
+    share_link += "?" + current_section;
   }
   copyToClipboard(share_link);
   $("#modal_link")[0].innerText = share_link;
@@ -123,6 +119,37 @@ function toggleIcon() {
   $('#nav_icon').toggleClass('fa-ellipsis-v');
   $('#nav_icon').toggleClass('fa-times');
 }
+
+var form = document.getElementById("contact_form");
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  var status = document.getElementById("contact_status");
+  var data = new FormData(event.target);
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: {
+        'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      hideContact();
+      form.reset()
+    } else {
+      response.json().then(data => {
+        if (Object.hasOwn(data, 'errors')) {
+          status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+        } else {
+          status.innerHTML = "Oops! There was a problem submitting your form"
+        }
+      })
+    }
+  }).catch(error => {
+    status.innerHTML = "Oops! There was a problem submitting your form"
+  });
+}
+form.addEventListener("submit", handleSubmit)
 
 function sendForm(){
   event.preventDefault();
@@ -174,7 +201,9 @@ function projectSlide(prev=false) {
 $('.navbar-collapse .nav-link').on('click', function(){
     $('.navbar-collapse').collapse('hide');
 });
+function setURL(){
 
+}
 
 window.onscroll = function() {scrollNavbar()};
 

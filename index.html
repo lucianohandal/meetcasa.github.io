@@ -63,20 +63,36 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-sm-8">
-          <h5 class="text-center text-md-left">
-            I am a self-starter software engineer with a strong technical background, constantly learning from my peers.
-            My technical background and professional experiences are complemented by the diversity of teams and
+          <p class="text-center text-md-left">
+            I am a self-starter full-stack software engineer with a strong
+            technical background.My technical background and professional
+            experiences are complemented by the diversity of teams and
             environments I have worked in.
             <br><br>
-            My internships range not only from graphic design to backend development but also range from working on
-            start-ups in Bolivia to multinational companies in the US. Likewise, my undergraduate education has taken
-            place in a variety of countries and environments, each with a unique array of challenges. Those experiences,
-            and most specifically the people I worked with, guide me throughout my studies and led me to start my career
-            as an Engineering Analyst at Goldman Sachs.
+            The diversity of my experiences gave a good foundation to take
+            thrive in any environment. Launching Seis Puntos on an emerging
+            market pushed me to wear multiple hats, developing systems and
+            standards that are used up to this day on the company. In contrast
+            with my experience and Goldman Sachs, where the scope of my
+            responsibilities is smaller, but require deeper technical knowledge.
+            Additionally, I learnt to tackle the challenges of working on an
+            large company that deals with sensitive data; challenges that grew
+            as I moved to work on the Apple Card project. Working directly with
+            Apple has stressed the value of communication and collaboration on
+            large projects.
             <br><br>
-            My journey as a computer scientist just started in the finance industry, while I still have a lot to learn,
-            I aim to use the tools in my reach to create a positive impact.
-          </h5>
+            Likewise the diversity of my undergraduate education allowed me to
+            develop the cultural competence to work on a global economy. My work
+            as an international ambassador allowed me to interact with people
+            form all over the world and paved the way for me to take part of
+            Semester At Sea where I studied the business culture and challenges
+            of different countries in Asia and Africa while also visiting the
+            same companies I had as examples.
+            <br><br>
+            My journey as a computer scientist just started, while I still have
+            a lot to learn, I am confident enough that I have the tools
+            necessary to create a positive impact on a global scale.
+          </p>
         </div>
         <div class="col-12 col-sm-4 col-lg-3">
           <div class="d-none d-sm-flex flex-column justify-content-around w-100 h-100">
@@ -117,9 +133,11 @@
         <div class="about_collapse collapse w-100" id="collapse_exp">
           <div class="card card-body">
             <h6>Goldman Sachs</h6>
+            <small>2022, New York, NY</small>
+            <p>Engineering Analyst within the Consumer Wealth Management Division</p>
             <small>2021, Jersey City, NJ</small>
             <p>Engineering Analyst within the Asset Management Division</p>
-            <small>2020, New York, NY (Remote Program)</small>
+            <small>2020, New York, NY (Remote)</small>
             <p>Summer Engineering Analyst within the Consumer and Investment Management Division</p>
             <h6>Seis Puntos</h6>
             <small>2020, La Paz, Bolivia</small>
@@ -276,8 +294,8 @@
         <div id="portfolio" class="project_div col-12 col-sm-6 col-lg-4">
           <div class="project_info d-flex flex-column justify-content-center  align-items-center">
             <p class="text-center m-0 p-0">This</p>
-            <small class="text-center p-3">Minimalistic open-source portfolio</small>
-            <a class="btn btn-outline-light text-center" href="https://github.com/lhandalb/portfolio" target="_blank">Go To Repository</a>
+            <small class="text-center p-3">Simple GitHub Pages portfolio</small>
+            <a class="btn btn-outline-light text-center" href="https://github.com/lucianohandal/lucianohandal.github.io" target="_blank">Go To Repository</a>
           </div>
           <div class="project d-flex justify-content-center">
             <!-- <img src="static/projects/portfolio.jpg" alt="Portfolio"> -->
@@ -295,7 +313,7 @@
   <div id="contact" class="section d-flex align-items-center justify-content-center">
     <div id="contact_container" class="container">
       <h1>Contact me</h1>
-      <form id="contact_form" method="post" onsubmit="return sendForm()">
+      <form id="contact_form" action="https://formspree.io/f/xyyagkwp" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="input" class="form-control" id="name" name="name" placeholder="Name">
@@ -315,6 +333,9 @@
         <div class="d-flex justify-content-between">
           <small>*required</small>
           <button type="submit" class="btn btn-outline-light">Send</button>
+        </div>
+        <div class="form-group">
+          <p id="contact_status"></p>
         </div>
       </form>
     </div>
@@ -343,12 +364,9 @@
     </div>
   </div>
 
-  <!-- Optional JavaScript -->
-
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="static/portfolio.js"></script>
-  <script type="text/javascript"> getVars('{{loc}}') </script>
+  <!-- <script type="text/javascript"> getVars('{{loc}}') </script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
