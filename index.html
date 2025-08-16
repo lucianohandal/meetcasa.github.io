@@ -9,319 +9,100 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- Custom CSS -->
-  <link rel="StyleSheet" href="static/portfolio.css" />
+  <link rel="StyleSheet" href="static/casa.css" />
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+CA&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/6b9101bbf3.js" crossorigin="anonymous"></script>
 
-  <title>Luciano Handal</title>
+  <title>Casa</title>
   <!-- <meta name="description" content="Aspiring Computer Scientist"> -->
-  <meta property="og:title" content="Luciano Handal" />
-  <meta property="og:url" content="https://www.lucianohandal.com/" />
+  <meta property="og:title" content="Casa" />
+  <meta property="og:url" content="https://www.meetcasa.com/" />
   <!-- <meta property="og:description" content="Aspiring Computer Scientist"> -->
-  <meta property="og:image" content="static/projects/portfolio.jpg">
+  <meta property="og:image" content="static/images/preview.jpg">
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
 </head>
 <body onresize="getSectionsOffsets()">
-  <nav id="navbar" class="navbar navbar-expand-sm fixed-top navbar-dark">
+  <nav id="navbar" class="navbar navbar-expand-sm fixed-top pb-0 blur-background">
     <div class="d-flex justify-content-end">
       <button class="navbar-toggler border-0" type="button" onclick="toggleIcon()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i id="nav_icon" class="fas fa-ellipsis-v"></i>
       </button>
     </div>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto align-items-center">
         <li class="nav-item active">
-          <a class="nav-link text-right m-0" onclick="goToSection('home')">Home</a>
+          <a id="nav-logo" class="nav-link text-right m-0" onclick="goToSection('home')">
+            <img src="static/images/casa_logo.png" alt="Casa Logo">
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-right m-0" onclick="goToSection('about')">About</a>
+          <a class="nav-link text-right m-0" onclick="goToSection('how_it_works')">How it Works</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-right m-0" onclick="goToSection('projects')">Projects</a>
+          <a class="nav-link text-right m-0" onclick="goToSection('what_it_costs')">What it Costs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-right m-0" onclick="goToSection('contact')">Contact</a>
+          <a class="nav-link text-right m-0" onclick="goToSection('faq')">Frequently Asked</a>
         </li>
       </ul>
-      <button type="button" class="btn btn-outline-light border-0 d-none d-sm-block" data-toggle="modal" data-target="#share_modal" onclick="share()"><i class="fas fa-share-alt"></i></button>
+      <button type="button" class="btn button-outline" onclick="goToSection('waitlist')">
+        Join the Waitlist
+      </button>
     </div>
   </nav>
-  <div id="hello" class="section">
-    <h1 class="text-center" id="hello_world">Hello World!<span id='new_line'>\n</span></h1>
-    <h2 id="hello_arrow" class="text-center" onclick="goToSection('home')"><i class="fas fa-arrow-circle-down"></i></h2>
+  <div id="home" class="section d-flex align-items-center justify-content-center">
+    <div class="container row mx-auto">
+        <div class="col d-flex flex-column pl-5">
+          <h1 class="m-0">Buy now,</h1>
+          <h1>pay never<span class="asterisk">*</span></h1>
+          <h4>No interest.</h4>
+          <h4>No monthly payments.</h4>
+          <h4>No credit score impact.</h4>
+          <div>
+            <button type="button" class="btn button-fill px-5 py-3 my-5" onclick="goToSection('waitlist')">
+              Join the Waitlist
+            </button>
+          </div>
+
+        </div>
+        <div class="col d-flex align-items-center justify-content-center pr-5">
+          <div class="card-illustration"><img src="static/images/card.svg" alt="Card Illustration"></div>
+        </div>
+    </div>
   </div>
-  <div id="home" class="d-flex flex-column align-items-center justify-content-center section">
-    <h1 class="text-center">I am <span>Luciano</span>,</h1>
-    <h3 class="text-center px-2">Software Engineer <br class="d-lg-none">& Entrepreneur</h3>
+  <div id="how_it_works" class="d-flex flex-column align-items-center justify-content-center section">
+    <h1 class="text-center">What’s the catch?</h1>
   </div>
-  <div id="about" class="section">
+  <div id="what_it_costs" class="d-flex flex-column align-items-center justify-content-center section">
+    <h1 class="text-center">Keep it simple, save money</h1>
+  </div>
+  <div id="faq" class="d-flex flex-column align-items-center justify-content-center section">
+    <h1 class="text-center">Frequently asked</h1>
+  </div>
+  <div id="waitlist" class="section d-flex align-items-center justify-content-center">
     <div class="container">
-      <div class="row">
-        <div class="col-12 col-sm-8">
-          <div class="container section_title">
-            <h1>About Me</h1>
-          </div>
-        </div>
-        <div class="col-12 col-sm-4 col-lg-3">
-          <div class="d-none d-sm-flex flex-column justify-content-around w-100 h-100">
-            <a class="text-right" href="http://www.linkedin.com/in/lucianohandal/" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a>
-            <a class="text-right" href="https://github.com/lucianohandal/" target="_blank">GitHub <i class="fab fa-github"></i></a>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="d-flex mt-3 justify-content-start">
-            <button id="tab_exp" class="btn tab active_tab" type="button" onclick="selectTab('exp')">
-              Experience
-            </button>
-            <button id="tab_edu" class="btn tab" type="button" onclick="selectTab('edu')">
-              Education
-            </button>
-            <button id="tab_skl" class="btn tab" type="button" onclick="selectTab('skl')">
-              Skills
-            </button>
-          </div>
-      </div>
-      <div class="">
-        <div class="about_collapse collapse w-100 show" id="collapse_exp">
-          <div class="card card-body">
-            <h6>Goldman Sachs</h6>
-            <small>2022, New York, NY</small>
-            <p>Engineering Associate within Platforms Solutions (Apple Card)</p>
-            <small>2021, Jersey City, NJ</small>
-            <p>Engineering Analyst within the Asset Management Division</p>
-            <small>2020, New York, NY (Remote)</small>
-            <p>Summer Engineering Analyst within the Consumer and Investment Management Division</p>
-            <h6>Handal Software Solutions</h6>
-            <small>2023, New York, NY</small>
-            <p>Founder</p>
-            <h6>Seis Puntos</h6>
-            <small>2020, La Paz, Bolivia</small>
-            <p>Lead Developer</p>
-            <h6>Purdue University</h6>
-            <small>2019, West Lafayette, IN</small>
-            <p>Teaching Assistant</p>
-          </div>
-        </div>
-        <div class="about_collapse collapse w-100" id="collapse_edu">
-          <div class="card card-body">
-            <h6>Purdue University</h6>
-            <small>2017 – 2021, West Lafayette, IN</small>
-            <p>
-              <span>BS:</span> Computer Science<br>
-              <span>Minor:</span> Mathematics<br>
-              <span>GPA:</span> 3.76
-            </p>
-            <h6>Semester At Sea</h6>
-            <small>2019</small>
-            <p>Multi-country study abroad program</p>
-          </div>
-        </div>
-        <div class="about_collapse collapse w-100" id="collapse_skl">
-          <div class="card card-body">
-            <div class="row">
-              <div class="col-12 col-sm-6">
-                <h5><span>Software</span></h5>
-                <p class="mb-0">
-                  <span>C</span>, <span>C++</span>, <span>Java</span>, <span>Python</span>, <span>Swift</span> and <span>JavaScript</span> programming languages<br>
-                  <span>SQL</span> and <span>NoSQL</span> database management language<br>
-                  <span>HTML</span> markup language and <span>CSS</span> style sheet language<br>
-                  <span>x86</span> assembly language<br>
-                  User experience, user interphase and graphic design
-                </p>
-                <p class="ml-3">Experience working with <span>Adobe XD</span>, <span>Illustrator</span> and <span>Photoshop</span></p>
-              </div>
-              <div class="col-12 col-sm-6">
-                <h5><span>Languages</span></h5>
-                <p>
-                  <span>Spanish</span> native speaker<br><br>
-                  <span>German</span> Proficient. Attended to a german high school and achieved B2 level on the Sprachdiplom II
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex d-sm-none justify-content-around my-5 w-100 h-100">
-        <a class="text-center" href="http://www.linkedin.com/in/lucianohandal/" target="_blank">LinkedIn <i class="fab fa-linkedin"></i></a>
-        <a class="text-center" href="https://github.com/lucianohandal/" target="_blank">GitHub <i class="fab fa-github"></i></a>
-      </div>
-    </div>
-
-  </div>
-  <div id="projects" class="section ">
-
-    <div id="projects_container" class="d-flex flex-column justify-content-center justify-content-around align-items-center">
-      <div id="project_btn" class="d-flex justify-content-between d-sm-none">
-        <button type="button" class="btn-outline-light border-0" onclick="projectSlide(true)"><i class="fas fa-chevron-left"></i></button>
-        <button type="button" class="btn-outline-light border-0" onclick="projectSlide()"><i class="fas fa-chevron-right"></i></button>
-      </div>
-      <h1 class="pl-4 w-100">Projects</h1>
-      <div class="row pb-md-4">
-        <div id="handalsoftwaresolutions" class="project_div col-12 col-sm-6 col-lg-4 selected">
-          <div class="project_info d-flex flex-column justify-content-center  align-items-center">
-            <p class="text-center m-0 p-0">Handal Software Solutions</p>
-            <small class="text-center p-3">
-              Handal Software Solutions is a start-up that aims to create software-based solutions to improve every day tasks.
-            </small>
-            <a class="btn btn-outline-light text-center" href="https://www.handal.app/" target="_blank">Check It Out</a>
-          </div>
-          <div class="project d-flex justify-content-center">
-          </div>
-          <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
-            <p class="text-center">Handal Software Solutions</p>
-            <small>
-              Handal Software Solutions is a start-up that aims to create software-based solutions to improve every day tasks.
-            </small>
-            <a class="text-center" href="https://www.handal.app/" target="_blank">Check It Out</a>
-          </div>
-        </div>
-        <div id="brulee" class="project_div col-12 col-sm-6 col-lg-4">
-          <div class="project_info d-flex flex-column justify-content-center  align-items-center">
-            <p class="text-center m-0 p-0">brulee</p>
-            <small class="text-center p-3">
-              The brulee app is a cooking assistant for developing recipes and guiding through their execution.
-            </small>
-            <a class="btn btn-outline-light text-center" href="https://apps.apple.com/us/app/brulee/id6456452611" target="_blank">Check It Out</a>
-          </div>
-          <div class="project d-flex justify-content-center">
-          </div>
-          <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
-            <p class="text-center">brulee</p>
-            <small class="text-center">
-              The brulee app is a cooking assistant for developing recipes and guiding through their execution.
-            </small>
-            <a class="text-center"  href="https://apps.apple.com/us/app/brulee/id6456452611" target="_blank">Check It Out</a>
-          </div>
-        </div>
-        <div id="hdden" class="project_div col-12 col-sm-6 col-lg-4">
-          <div class="project_info d-flex flex-column justify-content-center  align-items-center">
-            <p class="text-center m-0 p-0">hdden</p>
-            <small class="text-center p-3">
-              The hdden app allows you to add invisible buttons to your home screen, enabling quick and discreet access to apps, shortcuts, and websites.
-            </small>
-            <a class="btn btn-outline-light text-center" href="https://apps.apple.com/us/app/hdden/id6736426125" target="_blank">Check It Out</a>
-          </div>
-          <div class="project d-flex justify-content-center">
-          </div>
-          <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
-            <p class="text-center">hdden</p>
-            <small class="text-center">
-              The hdden app allows you to add invisible buttons to your home screen, enabling quick and discreet access to apps, shortcuts, and websites.
-            </small>
-            <a class="text-center"  href="https://apps.apple.com/us/app/hdden/id6736426125" target="_blank">Check It Out</a>
-          </div>
-        </div>
-        <div id="arsandbox"  class="project_div col-12 col-sm-6 col-lg-4">
-          <div class="project_info d-flex flex-column justify-content-center  align-items-center">
-            <p class="text-center m-0 p-0">AR Sandbox</p>
-            <small class="text-center p-3">
-              Augmented Reality (AR) Sandbox crafted for Camp Riley.
-            </small>
-            <a class="btn btn-outline-light text-center" href="arsandbox.html" target="_blank">Check It Out</a>
-          </div>
-          <div class="project d-flex justify-content-center">
-          </div>
-          <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
-            <p class="text-center">AR Sandbox</p>
-            <small>
-              Augmented Reality (AR) Sandbox crafted for Camp Riley.
-            </small>
-            <a class="text-center" href="arsandbox.html" target="_blank">Check It Out</a>
-          </div>
-        </div>
-        <div id="tinderbot" class="project_div col-12 col-sm-6 col-lg-4">
-          <div class="project_info d-flex flex-column justify-content-center  align-items-center">
-            <p class="text-center m-0 p-0">Tinder Bot</p>
-            <small class="text-center p-3">
-              Python-based selenium bot that logs in into an account and 'likes' all profiles
-              on an specified location.
-            </small>
-            <a class="btn btn-outline-light text-center" href="https://github.com/lhandalb/tinderBot" target="_blank">Go To Repository</a>
-          </div>
-          <div class="project d-flex justify-content-center">
-          </div>
-          <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
-            <p class="text-center">Tinder Bot</p>
-            <small>
-              Tinder bot that logs in into an account and 'likes' all profiles
-              on an specified location.
-            </small>
-            <a class="text-center" href="https://github.com/lhandalb/tinderBot" target="_blank">Go To Repository</a>
-          </div>
-        </div>
-        <div id="portfolio" class="project_div col-12 col-sm-6 col-lg-4">
-          <div class="project_info d-flex flex-column justify-content-center  align-items-center">
-            <p class="text-center m-0 p-0">This</p>
-            <small class="text-center p-3">Simple GitHub Pages portfolio</small>
-            <a class="btn btn-outline-light text-center" href="https://github.com/lucianohandal/lucianohandal.github.io" target="_blank">Go To Repository</a>
-          </div>
-          <div class="project d-flex justify-content-center">
-          </div>
-          <div class="d-flex flex-column justify-content-between d-sm-none phone_info">
-            <p class="text-center">This</p>
-            <small>Minimalistic open-source portfolio</small>
-            <a class="text-center" href="https://github.com/lhandalb/portfolio" target="_blank">Go To Repository</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div id="contact" class="section d-flex align-items-center justify-content-center">
-    <div id="contact_container" class="container">
-      <h1>Contact me</h1>
-      <form id="contact_form" action="https://formspree.io/f/xyyagkwp" method="POST">
+      <h1 class="text-center">Join the Waitlist</h1>
+      <form id="waitlist_container" action="https://formspree.io/f/xyyagkwp" method="POST" class="mx-auto">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="input" class="form-control" id="name" name="name" placeholder="Name">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="d-flex justify-content-between ">
+          <button type="submit" class="btn button-outline w-100" onclick="goToSection('waitlist')">Join</button>
         </div>
         <div class="form-group">
-          <label for="name">Subject</label>
-          <input type="input" class="form-control" id="subject" name="subject" placeholder="Subject">
-        </div>
-        <div class="form-group">
-          <label for="email">Email address*</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message*</label>
-          <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
-        </div>
-        <div class="d-flex justify-content-between">
-          <small>*required</small>
-          <button type="submit" class="btn btn-outline-light">Send</button>
-        </div>
-        <div class="form-group">
-          <p id="contact_status"></p>
+          <p id="waitlist_status"></p>
         </div>
       </form>
     </div>
-    <div id="contact_thx">
-      <h1 class="text-center">Thank you!</h1>
+    <div id="waitlist_thx">
+      <h1 class="text-center">Thank you</h1>
       <h3 class="text-center">I will reach out as soon as possible.</h3>
     </div>
 
-  </div>
-  <div class="modal fade" id="share_modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="share_modal_title">Link copied</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>The link <a id="modal_link" href="#"></a>, has been copied to your clipboard. </p>
-        </div>
-        <div class="modal-footer d-flex justify-content-around border-0">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Ok</button>
-        </div>
-      </div>
-    </div>
   </div>
   <script>
   if (window.location.protocol != "https:") {
@@ -329,7 +110,7 @@
   }
   </script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="static/portfolio.js"></script>
+  <script src="static/casa.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
