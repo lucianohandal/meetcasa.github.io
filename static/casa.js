@@ -10,7 +10,7 @@ const url = document.URL.split("?")[0];
 // const query = url.split('?',2)[1];
 var current_section = 'hello';
 var current_color = '#222831';
-var sectionOffsets;
+var sectionOffsets = [];
 var sectNum = {};
 var current_project = 0;
 var loc = document.URL.split("?")[1];
@@ -31,16 +31,26 @@ function getSectionsOffsets(){
 }
 
 function showPosition(i) {
-  if (current_section == sectionOffsets[i+1].id) {
+  if (current_section == sectionOffsets[i].id) {
     return;
   }
-  current_section = sectionOffsets[i+1].id;
-  current_color = sectionOffsets[i+1].bg_color;
+  current_section = sectionOffsets[i].id;
   if (i < 0) {
     $('.active').removeClass('active');
     return;
   }
-  $("#navbar").show();
+  // $("#navbar").show();
+
+  if (i === 0 || i + 1 ===  sectionOffsets.length) {
+    $("#navbar-waitlist-button").hide();
+  } else {
+    $("#navbar-waitlist-button").show();
+  }
+  if (i + 1 ===  sectionOffsets.length) {
+    $('.nav-item').addClass('white');
+  } else {
+   $('.nav-item').removeClass('white');
+  }
   $('.active').removeClass('active');
   $(nav_items[i]).addClass('active');
 }
@@ -55,7 +65,7 @@ function scrollNavbar(){
   let scrollPosition = $(window).scrollTop() + navbar.offsetHeight;
   for (var i = 0; i < sectionOffsets.length; i++) {
     if (scrollPosition < sectionOffsets[i].offset) {
-      showPosition(i - 1)
+      showPosition(i)
       // colorCoordinate();
       break
     }
@@ -68,7 +78,8 @@ function goToSection(section_id){
   }
   let time = Math.abs(sectionOffsets[sectNum[section_id]].offset - sectionOffsets[sectNum[current_section]].offset)
   time = Math.min(time/2, 1000)
-  let location = sectionOffsets[sectNum[section_id] - 1].offset;
+  sect_index = sectNum[section_id]
+  let location = sect_index === 0 ? 0 : sectionOffsets[sect_index - 1].offset;
   $('html, body').animate({scrollTop: location}, time,
     function(){window.scrollTo(0, location);});
 }
@@ -212,11 +223,10 @@ window.onscroll = function() {
 function main() {
   // typeHello();
   getSectionsOffsets();
+  scrollNavbar()
   // if (loc != 'hello') {
   //   goToSection(loc);
   // }
-  setTimeout(function(){
-    $('#hello_arrow').css('animation-name', 'blink')}, 2000);
 }
 
 $( document ).ready(function() { main() });

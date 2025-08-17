@@ -199,6 +199,11 @@ h6 {
   font-weight: 700;
 }
 
+#faq h6 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 .share{
   color: var(--color-white);
   display: inline-flex;      /* shrink to content */
@@ -427,6 +432,18 @@ button{
   display: flex;
   flex-direction: column;
   opacity: 50%;
+}
+
+.active .nav-link{
+  font-weight: 700;
+}
+
+.white .nav-link{
+  color: var(--color-mint-cream);
+}
+
+.white #nav-logo-text{
+  filter: brightness(10000%);
 }
 
 .active-bar {
