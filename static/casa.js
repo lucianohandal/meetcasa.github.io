@@ -51,16 +51,16 @@ function colorCoordinate() {
   $(body).css('background-color', current_color)
 }
 
-// function scrollNavbar(){
-//   let scrollPosition = $(window).scrollTop() + navbar.offsetHeight;
-//   for (var i = 0; i < sectionOffsets.length; i++) {
-//     if (scrollPosition < sectionOffsets[i].offset) {
-//       showPosition(i - 1)
-//       colorCoordinate();
-//       break
-//     }
-//   }
-// }
+function scrollNavbar(){
+  let scrollPosition = $(window).scrollTop() + navbar.offsetHeight;
+  for (var i = 0; i < sectionOffsets.length; i++) {
+    if (scrollPosition < sectionOffsets[i].offset) {
+      showPosition(i - 1)
+      // colorCoordinate();
+      break
+    }
+  }
+}
 
 function goToSection(section_id){
   if (sectNum[section_id] == null) {
@@ -205,10 +205,9 @@ function setURL(){
 
 }
 
-// window.onscroll = function() {
-//   if
-//   scrollNavbar()
-// };
+window.onscroll = function() {
+  scrollNavbar()
+};
 
 function main() {
   // typeHello();

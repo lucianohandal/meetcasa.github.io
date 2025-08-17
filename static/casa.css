@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Oldschool Grotesk';
   src: url('fonts/OldschoolGrotesk/OldschoolGroteskVarTrial.ttf') format('truetype');
-  font-weight: bold;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -27,7 +27,7 @@
 }
 
 :root {
-  --nav-height: 56px;
+  --nav-height: 2rem;
   --color-tomato: #FF4E3F;
   --color-cerulean: #016B83;
   --color-gunmetal: #102331;
@@ -38,6 +38,7 @@
   --font-serif: 'P22 Mackinac Pro', sans-serif;
   --small-corner-radius: 0.5rem;
   --corner-radius: 1rem;
+  --max-width: 64rem;
 }
 
 .body {
@@ -66,6 +67,31 @@ span {
   font-weight: bold;
 }
 
+
+#how_it_works .info-card {
+  min-width: 33%;
+  padding: 2rem;
+}
+
+#faq .info-card {
+  min-width: 33%;
+  padding: 1rem 2rem;
+}
+
+.accordion-header {
+  background: transparent;
+}
+
+.info-card {
+  margin: 0.5rem 0;
+  border-radius: var(--corner-radius);
+  background: var(--color-mint-cream);
+}
+
+.info-cards {
+  gap: 1rem;
+}
+
 .asterisk {
   vertical-align: -2.5rem;
   font-size: 5rem;
@@ -74,6 +100,10 @@ span {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+.move-left {
+  margin-left: -3rem;
 }
 
 #navbar {
@@ -97,6 +127,10 @@ span {
   height: 100%;            /* fill the anchor height */
   width: auto;             /* keep aspect ratio */
   max-height: 100%;
+}
+
+#nav-logo-text {
+  height: 70% !important;
 }
 
 .section {
@@ -141,9 +175,18 @@ h1 {
   font-size: 3rem;
 }
 
+h2 {
+  font-size: 2rem;
+}
+
 h4 {
   font-size: 1.75rem;
   font-weight: 700;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 #about .card{
@@ -170,35 +213,13 @@ h4 {
   margin: 0 1px;
 }
 
-#about button:focus,
-#about button:active,
-#about button:hover,
-#about .btn:focus,
-#about .btn:active,
-#about .btn:hover
-#about .btn.focus,
-#about .btn.active,
-#about .btn.hover{
-  outline: none!important;
-  box-shadow:  0 0 0 0;
-}
-
-#about .card{
-  border-radius: 0 .25rem .25rem .25rem;
-}
-
-#project_btn{
-  position: absolute;
-  width: 95vw;
-}
-
-#project_btn button:not(:disabled):not(.disabled).active,
-#project_btn button:not(:disabled):not(.disabled):active,
-.show>#project_btn button.dropdown-toggle,
-#project_btn button:focus,
-#project_btn button:active,
-#project_btn button:hover,
-#project_btn button{
+button:not(:disabled):not(.disabled).active,
+button:not(:disabled):not(.disabled):active,
+.show>button.dropdown-toggle,
+button:focus,
+button:active,
+button:hover,
+button{
   color: var(--color-gunmetal);
   background-color: rgba(0, 0, 0, 0);
   outline: none;
@@ -214,6 +235,7 @@ h4 {
 .navbar-toggler{
   color: var(--color-gunmetal);
   background-color: rgba(0, 0, 0, 0);
+  font-weight: 500;
   outline: none;
   box-shadow: none;
 }
@@ -297,13 +319,41 @@ h4 {
 }
 
 #waitlist .button-outline:hover {
-  color: var(--color-gunmetal);
+  color: var(--color-tomato);
   background-color: var(--color-white);
+}
+.btn{
+  font-weight: 500;
+}
+
+.button-text {
+  background-color: transparent;
+  border: none;
+}
+
+.accordion-button[aria-expanded="true"] {
+  border-bottom: 2px solid white;
+  margin-bottom: 0.5rem;
+}
+
+.button-text:hover {
+  color: var(--color-cerulean);
+}
+
+.accordion-button[aria-expanded="true"] .fas.fa-chevron-down {
+  transform:  scaleY(-1);
+  transition: transform 0.3s ease;
+}
+
+.accordion-button[aria-expanded="false"] .fas.fa-chevron-down {
+  transform:  scaleY(1);
+  transition: transform 0.3s ease;
 }
 
 .button-fill {
   color: var(--color-white);
-  background-color: var(--color-tomato);  border-radius: var(--small-corner-radius);
+  background-color: var(--color-tomato);
+  border-radius: var(--small-corner-radius);
   border-radius: var(--small-corner-radius);
 }
 
@@ -384,4 +434,8 @@ h4 {
 .card-illustration {
   border-radius: var(--corner-radius);
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-width: var(--max-width);;
 }
