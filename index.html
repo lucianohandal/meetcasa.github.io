@@ -108,21 +108,25 @@
         <div class="w-100">
           <p class="m-0"><span>Home Value</span></p>
           <input type="text" class="form-control money-format" id="homeValue" name="homeValue" placeholder="$550,000" value="500000" min=0 oninput="homeValueCalculatorListener()">
+          <small class="input-label pl-2">This is your home equity</small>
         </div>
         <div class="w-100 mx-2">
           <p class="m-0"><span>Home Share</span></p>
           <input type="text" class="form-control money-format" id="homeShare" name="homeShare" placeholder="$50,000" value="50000" min="0" max="192500" oninput="homeValueCalculatorListener()">
+          <small class="input-label pl-2">This is the amount of cash you'll to get from Casa</small>
+          <small><span id="homeShareInputErrorMessage">Home Share</span></small>
         </div>
-        <div class="w-100">
+        <div class="d-flex flex-column justify-content-between w-100">
           <p class="m-0"><span>Home price appreciation</span></p>
           <div class="d-flex">
             <p class="mb-0 mr-1"><span id="appreciation">2%</span></p>
             <input type="range" class="form-control-range" id="appreciationSlider" name="appreciationSlider" min="-1" max="4" step="1" value="2" oninput="document.getElementById('appreciation').innerText = this.value + '%'" onchange="homeValueCalculatorListener()">
           </div>
+          <small id="appreciationLabel" class="input-label pl-2">Moderate appreciation</small>
         </div>
       </div>
-      <div id="share-graph" class="row">
-        <div id="graph" class="col-12 col-lg-8 p-0 d-flex flex-column">
+      <div id="share-graph" class="d-flex">
+        <div id="graph" class="p-0 d-flex flex-column">
         <div id="bar-graph"  class="d-flex align-items-end">
           <small class="y-label m-0">HOME VALUE</small>
           <div onclick="tappedBar(this.id)" id="bar1" class="progress bg-transparent">
@@ -188,8 +192,7 @@
         </div>
         <small class="text-center">EXIT YEAR</small>
       </div>
-<!--        <div class="col-0 col-lg-1 p-0"></div>-->
-        <div class="col p-0 pl-lg-5">
+        <div id="shares" class="p-0 pl-lg-5">
           <div class="d-flex flex-column justify-content-center h-100">
             <div id="yourShare" class="info-card w-100 share">
               <div class="d-flex flex-column">

@@ -3,6 +3,7 @@ const navbar = $("#navbar")[0];
 const nav_items = $('.nav-item');
 const maxCost = 1.19;
 const maxHomeShare = 0.45;
+const maxHomeShareAmount = 500_000;
 const multiplier = 2;
 const url = document.URL.split("?")[0];
 var current_section = 'hello';
@@ -11,9 +12,19 @@ var sectionOffsets = [];
 var homeSplitOverTime = [];
 var sectNum = {};
 var loc = document.URL.split("?")[1];
-var homeValue = 550000;
-var homeShare = 50000;
+var homeValue = 550_000;
+var homeShare = 50_000;
 var appreciationRate = 1.02;
+
+const appreciationLabelMap = {
+  "-1": "Decline",
+   "0": "No change",
+   "1": "Low appreciation",
+   "2": "Moderate appreciation",
+   "3": "High appreciation",
+   "4": "Very high appreciation"
+};
+
 
 function getSectionsOffsets(){
   sectionOffsets = [];
@@ -262,14 +273,21 @@ function homeValueCalculatorListener(){
     return;
   }
 
-  if (newHomeShare > newHomeValue * maxHomeShare) {
-    //TODO: add error message
+  if (newHomeShare > maxHomeShareAmount) {
+    $('#homeShareInputErrorMessage').text(`You can get up to $${moneyFormat(maxHomeShareAmount)} through Home Share`);
+    newHomeShare = maxHomeShareAmount;
+  } else if (newHomeShare > newHomeValue * maxHomeShare) {
+    $('#homeShareInputErrorMessage').text(`You can get up to ${maxHomeShare * 100}% of your home equity through Home Share`);
     newHomeShare = newHomeValue * maxHomeShare;
+  } else {
+    $('#homeShareInputErrorMessage').text(``);
   }
 
   homeValue = newHomeValue;
   homeShare = newHomeShare;
   appreciationRate = 1 + appreciation / 100;
+
+  $('#appreciationLabel').text(appreciationLabelMap[appreciation]);
 
   if (moneyFormat(homeValue) !== $('#homeValue').val()
       || moneyFormat(homeShare) !== $('#homeShare').val() ){
@@ -278,10 +296,6 @@ function homeValueCalculatorListener(){
   }
 
   $('#homeShare').attr('max', newHomeValue * maxHomeShare);
-
-
-
-  console.log("homeValue:", homeValue, "homeShare:", homeShare, "appreciationRate:", appreciationRate);
 
   calculateShareValues();
   setBarHeights();
