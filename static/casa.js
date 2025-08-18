@@ -6,8 +6,7 @@ const maxHomeShare = 0.45;
 const maxHomeShareAmount = 500_000;
 const multiplier = 2;
 const url = document.URL.split("?")[0];
-var current_section = 'hello';
-var current_color = '#222831';
+var current_section = 'home';
 var sectionOffsets = [];
 var homeSplitOverTime = [];
 var sectNum = {};
@@ -67,8 +66,9 @@ function showPosition(i) {
 }
 
 function colorCoordinate() {
-  $(navbar).css('background-color', current_color)
-  $('.modal-content').css('background-color', current_color)
+
+  let current_color = current_section === "waitlist" ? "#09475A" : $('#'+current_section).css('backgroundColor');
+
   $(body).css('background-color', current_color)
 }
 
@@ -77,7 +77,7 @@ function scrollNavbar(){
   for (var i = 0; i < sectionOffsets.length; i++) {
     if (scrollPosition < sectionOffsets[i].offset) {
       showPosition(i)
-      // colorCoordinate();
+      colorCoordinate();
       break
     }
   }
@@ -237,7 +237,7 @@ function setBarHeights() {
     $('#bar' + barNum + ' .bar-casa').css('height', casaHeight + '%');
     $('#bar' + barNum + ' .bar-yours').css('height', yourHeight + '%');
     $('#bar' + barNum++ + ' .bg-transparent').css('height', emptyHeight + '%');
-    console.log(split)
+    // console.log(split)
   });
 }
 
@@ -250,7 +250,7 @@ function calculateShareValues(){
     homeSplitOverTime.push({"casa":casaShare, "you":yourShare});
   }
 
-  console.log(homeSplitOverTime);
+  // console.log(homeSplitOverTime);
 }
 
 function homeValueCalculatorListener(){
@@ -337,11 +337,43 @@ window.onscroll = function() {
   scrollNavbar()
 };
 
+async function getLocationInfo() {
+  try {
+    // Step 1: Get the client IP
+    let ipResponse = await fetch("https://api.ipify.org?format=json");
+    let ipData = await ipResponse.json();
+    let ip = ipData.ip;
+
+    // Step 2: Use IP to get geolocation
+    let geoResponse = await fetch(`https://ipapi.co/${ip}/json/`);
+    let geoData = await geoResponse.json();
+
+    // Step 3: Build state + country string
+    let state = geoData.region;   // e.g. "California"
+    let country = geoData.country_name; // e.g. "United States"
+    let result = `${state}, ${country}`;
+
+    return result;
+  } catch (error) {
+    console.error("Error fetching location:", error);
+    return null;
+  }
+}
+
+function formCheck(){
+  console.log("email " + $("#email").val())
+  console.log("location " + $("#location").val())
+}
+
 function main() {
   // typeHello();
+  getLocationInfo().then(location => {
+    $("#location").val(location);
+  });
   getSectionsOffsets();
   scrollNavbar()
   homeValueCalculatorListener()
+  colorCoordinate();
   // if (loc != 'hello') {
   //   goToSection(loc);
   // }

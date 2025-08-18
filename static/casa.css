@@ -41,9 +41,9 @@
   --max-width: 64rem;
 }
 
-.body {
+body {
+  /*background: var(--color-mint-cream);*/
   font-family: var(--font-sans-serif), serif;
-  background-color: var(--color-white);
   color: var(--color-gunmetal);
 }
 
