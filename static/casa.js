@@ -1,19 +1,19 @@
 const body = $('body')[0];
 const navbar = $("#navbar")[0];
 const nav_items = $('.nav-item');
-// const hello_h1 = $("#hello_world")[0];
+const maxCost = 1.19;
+const maxHomeShare = 0.45;
+const multiplier = 2;
 const url = document.URL.split("?")[0];
-// const hello_msg = "Hello World!";
-// const hello_msg_html = "Hello World!<span id='new_line'>\\n</span>";
-// const projects = $('.project_div');
-// const contact_form = $("#contact_form")[0];
-// const query = url.split('?',2)[1];
 var current_section = 'hello';
 var current_color = '#222831';
 var sectionOffsets = [];
+var homeSplitOverTime = [];
 var sectNum = {};
-var current_project = 0;
 var loc = document.URL.split("?")[1];
+var homeValue = 550000;
+var homeShare = 50000;
+var appreciationRate = 1.02;
 
 function getSectionsOffsets(){
   sectionOffsets = [];
@@ -212,8 +212,111 @@ function selectTab(id){
 $('.navbar-collapse .nav-link').on('click', function(){
     $('.navbar-collapse').collapse('hide');
 });
-function setURL(){
 
+function setBarHeights() {
+  let maxHomeSplit = appreciationRate < 1 ? homeSplitOverTime[0] : homeSplitOverTime.at(-1);
+  let maxHomeValue = maxHomeSplit.casa + maxHomeSplit.you;
+
+  let barNum = 1;
+  homeSplitOverTime.forEach(split => {
+    let casaHeight = maxHomeValue === 0 ? 0 : (split.casa/maxHomeValue)*100;
+    let yourHeight = maxHomeValue === 0 ? 0 : (split.you/maxHomeValue)*100;
+    let emptyHeight = maxHomeValue === 0 ? 100 : ((maxHomeValue - split.casa - split.you)/maxHomeValue)*100;
+
+    $('#bar' + barNum + ' .bar-casa').css('height', casaHeight + '%');
+    $('#bar' + barNum + ' .bar-yours').css('height', yourHeight + '%');
+    $('#bar' + barNum++ + ' .bg-transparent').css('height', emptyHeight + '%');
+    console.log(split)
+  });
+}
+
+function calculateShareValues(){
+  homeSplitOverTime = [];
+
+  for (let year = 3; year <= 30; year += 3) {
+    let casaShare = Math.round(Math.min(maxCost ** year, multiplier) * appreciationRate ** year * homeShare);
+    let yourShare = Math.round(homeValue * appreciationRate ** year - casaShare);
+    homeSplitOverTime.push({"casa":casaShare, "you":yourShare});
+  }
+
+  console.log(homeSplitOverTime);
+}
+
+function homeValueCalculatorListener(){
+  let newHomeValue = parseMoney($('#homeValue').val());
+  let newHomeShare = parseMoney($('#homeShare').val());
+  let appreciation = parseInt($('#appreciationSlider').val());
+
+  if (isNaN(newHomeValue) || newHomeValue < -1) {
+    $('#homeValue').val(homeValue);
+    return;
+  }
+
+  if (isNaN(newHomeShare) || newHomeValue < -1) {
+    $('#homeShare').val(homeShare);
+    return;
+  }
+
+  if (isNaN(appreciation)) {
+    $('#appreciationSlider').val((appreciationRate - 1) - 1);
+    return;
+  }
+
+  if (newHomeShare > newHomeValue * maxHomeShare) {
+    //TODO: add error message
+    newHomeShare = newHomeValue * maxHomeShare;
+  }
+
+  homeValue = newHomeValue;
+  homeShare = newHomeShare;
+  appreciationRate = 1 + appreciation / 100;
+
+  if (moneyFormat(homeValue) !== $('#homeValue').val()
+      || moneyFormat(homeShare) !== $('#homeShare').val() ){
+    $('#homeValue').val(moneyFormat(homeValue));
+    $('#homeShare').val(moneyFormat(homeShare));
+  }
+
+  $('#homeShare').attr('max', newHomeValue * maxHomeShare);
+
+
+
+  console.log("homeValue:", homeValue, "homeShare:", homeShare, "appreciationRate:", appreciationRate);
+
+  calculateShareValues();
+  setBarHeights();
+  setShareSplit()
+}
+
+function moneyFormat(number){
+  return number.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function parseMoney(str){
+  if (!str || !str.replace(/,/g, '')){
+    return 0;
+  }
+
+  return parseInt(str.replace(/,/g, ''), 10);
+}
+
+function setShareSplit() {
+  let activeBar = $('.active-bar')[0];
+
+  let barIndex = parseInt(activeBar.id.replace("bar", "")) - 1;
+  let split = homeSplitOverTime[barIndex];
+
+  $('#casaShareValue').text(moneyFormat(split.casa));
+  $('#yourShareValue').text(moneyFormat(split.you));
+}
+
+function tappedBar(barId) {
+  if ($('#'+barId).hasClass("active-bar")) {
+    return;
+  }
+  $('.active-bar').removeClass("active-bar")
+  $('#'+barId).addClass("active-bar")
+  setShareSplit();
 }
 
 window.onscroll = function() {
@@ -224,6 +327,7 @@ function main() {
   // typeHello();
   getSectionsOffsets();
   scrollNavbar()
+  homeValueCalculatorListener()
   // if (loc != 'hello') {
   //   goToSection(loc);
   // }

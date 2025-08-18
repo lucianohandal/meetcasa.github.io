@@ -107,17 +107,17 @@
       <div class="d-flex form-group">
         <div class="w-100">
           <p class="m-0"><span>Home Value</span></p>
-          <input type="text" class="form-control money-format" id="homeValue" name="homeValue" placeholder="$550,000" value="500000">
+          <input type="text" class="form-control money-format" id="homeValue" name="homeValue" placeholder="$550,000" value="500000" min=0 oninput="homeValueCalculatorListener()">
         </div>
         <div class="w-100 mx-2">
           <p class="m-0"><span>Home Share</span></p>
-          <input type="text" class="form-control money-format" id="homeShare" name="homeShare" placeholder="$50,000" value="50000">
+          <input type="text" class="form-control money-format" id="homeShare" name="homeShare" placeholder="$50,000" value="50000" min="0" max="192500" oninput="homeValueCalculatorListener()">
         </div>
         <div class="w-100">
           <p class="m-0"><span>Home price appreciation</span></p>
           <div class="d-flex">
             <p class="mb-0 mr-1"><span id="appreciation">2%</span></p>
-            <input type="range" class="form-control-range" id="appreciationSlider" name="appreciationSlider" min="-1" max="4" step="1" value="2" oninput="document.getElementById('appreciation').innerText = this.value + '%'">
+            <input type="range" class="form-control-range" id="appreciationSlider" name="appreciationSlider" min="-1" max="4" step="1" value="2" oninput="document.getElementById('appreciation').innerText = this.value + '%'" onchange="homeValueCalculatorListener()">
           </div>
         </div>
       </div>
@@ -125,78 +125,78 @@
         <div id="graph" class="col-12 col-lg-8 p-0 d-flex flex-column">
         <div id="bar-graph"  class="d-flex align-items-end">
           <small class="y-label m-0">HOME VALUE</small>
-          <div id="bar1" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar1" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">3</small>
           </div>
-          <div id="bar2" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar2" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">6</small>
           </div>
-          <div id="bar3" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar3" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">9</small>
           </div>
-          <div id="bar4" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar4" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">12</small>
           </div>
-          <div id="bar5" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar5" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">15</small>
           </div>
-          <div id="bar6" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar6" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">18</small>
           </div>
-          <div id="bar7" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar7" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">21</small>
           </div>
-          <div id="bar8" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar8" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">24</small>
           </div>
-          <div id="bar9" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar9" class="progress bg-transparent">
+            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
             <small class="text-center m-0">27</small>
           </div>
-          <div id="bar10" class="progress bg-transparent active-bar">
-          <div class="progress-bar bg-transparent" role="progressbar" style="height: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-          <div class="progress-bar bar-yours" role="progressbar" style="height: 80%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-          <div class="progress-bar bar-casa" role="progressbar" style="height: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <div onclick="tappedBar(this.id)" id="bar10" class="progress bg-transparent active-bar">
+          <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+          <div class="progress-bar bar-yours" role="progressbar" style="height: 0%" ></div>
+          <div class="progress-bar bar-casa" role="progressbar" style="height: 0%" ></div>
           <small class="text-center m-0">30</small>
         </div>
         </div>
         <small class="text-center">EXIT YEAR</small>
       </div>
-        <div class="col-0 col-lg-1 p-0"></div>
-        <div class="col p-0">
+<!--        <div class="col-0 col-lg-1 p-0"></div>-->
+        <div class="col p-0 pl-lg-5">
           <div class="d-flex flex-column justify-content-center h-100">
             <div id="yourShare" class="info-card w-100 share">
               <div class="d-flex flex-column">
                 <h3 class="m-0">Your share</h3>
                   <div class="d-flex flex-row align-items-end ">
                     <h5>$</h5>
-                    <h4 class="m-0">906,507</h4>
+                    <h4 id="yourShareValue"  class="m-0">906,507</h4>
                   </div>
               </div>
             </div>
@@ -206,7 +206,7 @@
                 <h3 class="m-0">Casa’s share</h3>
                 <div class="d-flex flex-row align-items-end ">
                   <h5>$</h5>
-                  <h4 class="m-0">95,158</h4>
+                  <h4 id="casaShareValue"  class="m-0">95,158</h4>
                 </div>
               </div>
             </div>
