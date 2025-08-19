@@ -120,14 +120,18 @@ span {
   background-color: rgba(255, 255, 255, 0);
 }
 
-#nav-logo {
+.accent-color {
+  color: var(--color-tomato);
+}
+
+.nav-logo {
   display: flex;
   align-items: center;
   padding: 0;              /* kill default link padding */
   height: var(--nav-height);
 }
 
-#nav-logo img {
+.nav-logo img {
   display: block;
   height: 100%;            /* fill the anchor height */
   width: auto;             /* keep aspect ratio */
@@ -190,41 +194,15 @@ h4 {
 }
 
 h5 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 500;
 }
 
 h6 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
-#faq h6 {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-
-
-/*!* Flex layout for share graph *!*/
-/*#share-graph {*/
-/*  display: flex;*/
-/*  flex-wrap: nowrap;*/
-/*  align-items: stretch;*/
-/*  gap: 1rem;*/
-/*}*/
-
-/*!* #graph max width = 2/3 of container *!*/
-/*#graph {*/
-/*  flex: 1 1 66.6667%;*/
-/*  max-width: 66.6667%;*/
-/*}*/
-
-/*!* #shares should not resize *!*/
-/*#shares {*/
-/*  flex: 0 0 auto;*/
-/*  flex-shrink: 0;*/
-/*}*/
 
 .input-label {
   opacity: 60%;
@@ -303,73 +281,6 @@ button{
   box-shadow: none;
 }
 
-
-#projects_container{
-  min-height: 90vh;
-}
-
-
-#projects_container .row{
-  width: 100%;
-}
-
-.phone_info{
-  height: 20vh;
-}
-
-.project_div {
-  padding: 1rem;
-  max-width: 85%;
-  margin: auto;
-  font-size: 120%;
-}
-
-.project {
-  border-radius: .5rem;
-  height: 20vw;
-  min-height: 14rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-#handalsoftwaresolutions .project {
-  background-image: url("images/handalsoftwaresolutions.jpg");
-}
-#brulee .project {
-  background-image: url("images/brulee.jpg");
-}
-#arsandbox .project {
-  background-image: url("images/arsandbox.jpg");
-}
-#hdden .project {
-  background-image: url("images/hdden.png");
-}
-
-#tinderbot .project {
-  background-image: url("images/tinderbot.jpg");
-}
-#portfolio .project {
-  background-image: url("images/preview.jpg");
-}
-
-.project_info {
-  opacity: 0;
-  border-radius: .5rem;
-  height: 20vw;
-  min-height: 14rem;
-  background-color: rgba(0,0,0,0.8);
-  position: absolute;
-  width: calc(100% - 1.95rem)
-}
-
-.project_div p{
-  font-weight: bold;
-}
-
-.project_div .png_img {
-  width: 100%;
-  max-height: 200%;
-}
 
 #waitlist {
   background: radial-gradient(at bottom, var(--color-tomato) 0%, var(--color-mid-gradient) 60%, var(--color-gunmetal) 100%);
@@ -519,32 +430,75 @@ button{
 }
 
 @media (max-width: 576px) {
-  #home h1, #hello h1 {
+  .asterisk {
     font-size: 4rem;
+    vertical-align: -2rem;
   }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
-  .section {
-    padding-top: 3.5rem;
+
+  h4 {
+    font-size: 2rem;
+    font-weight: 500;
   }
-  .project_div:not(.selected){
-    display: none!important;
+
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h6 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  nav.blur-background {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  nav.white{
+    background: transparent!important;
+  }
+
+  #waitlist {
+    background: radial-gradient(circle at bottom, var(--color-tomato) 0%, var(--color-mid-gradient) 60%, var(--color-gunmetal) 100%);
+  }
+
+  .move-left {
+    margin-left: -2.5rem;
+  }
+
+  #how_it_works .info-card {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  #faq .info-card {
+    padding: 0.5rem 1rem;
   }
 }
 
 @media (min-width: 576px) {
-  #projects_container{
-    padding: 0 5rem;
+
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
-  #about a{
-    font-size: 1.5rem;
-  }
-
-  #about hr{
-    width: 95%;
-    margin-left: 0;
+  .info-cards {
+    display: flex;
+    align-items: stretch;
   }
 }
 
@@ -553,7 +507,17 @@ button{
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
-.container {
+#navbar-toggler {
+  padding: 4.5px 4px;
+  color: var(--color-white);
+  background-color: var(--color-gunmetal);
+  backdrop-filter: blur(8px);
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.section .container {
   max-width: var(--max-width);;
 }
 .y-label {

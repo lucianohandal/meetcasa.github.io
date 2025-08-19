@@ -57,12 +57,16 @@ function showPosition(i) {
     $("#navbar-waitlist-button").show();
   }
   if (i + 1 ===  sectionOffsets.length) {
-    $('.nav-item').addClass('white');
+    $('nav').addClass('white');
   } else {
-   $('.nav-item').removeClass('white');
+    $('nav').removeClass('white');
   }
   $('.active').removeClass('active');
-  $(nav_items[i]).addClass('active');
+
+  if(i > 0){
+    $(nav_items[i-1]).addClass('active');
+  }
+
 }
 
 function colorCoordinate() {
@@ -73,7 +77,7 @@ function colorCoordinate() {
 }
 
 function scrollNavbar(){
-  let scrollPosition = $(window).scrollTop() + navbar.offsetHeight;
+  let scrollPosition = $(window).scrollTop() + navbar.offsetHeight
   for (var i = 0; i < sectionOffsets.length; i++) {
     if (scrollPosition < sectionOffsets[i].offset) {
       showPosition(i)
@@ -274,7 +278,7 @@ function homeValueCalculatorListener(){
   }
 
   if (newHomeShare > maxHomeShareAmount) {
-    $('#homeShareInputErrorMessage').text(`You can get up to $${moneyFormat(maxHomeShareAmount)} through Home Share`);
+    $('#homeShareInputErrorMessage').text(`You can get up to ${moneyFormat(maxHomeShareAmount)} through Home Share`);
     newHomeShare = maxHomeShareAmount;
   } else if (newHomeShare > newHomeValue * maxHomeShare) {
     $('#homeShareInputErrorMessage').text(`You can get up to ${maxHomeShare * 100}% of your home equity through Home Share`);
@@ -302,16 +306,20 @@ function homeValueCalculatorListener(){
   setShareSplit()
 }
 
-function moneyFormat(number){
-  return number.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+function moneyFormat(number, addSign=true){
+  let amount = number.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  if (addSign){
+    return "$" + amount;
+  }
+  return amount
 }
 
 function parseMoney(str){
-  if (!str || !str.replace(/,/g, '')){
+  if (!str || !str.replace(/,/g, '').replace('$', '')){
     return 0;
   }
 
-  return parseInt(str.replace(/,/g, ''), 10);
+  return parseInt(str.replace(/,/g, '').replace('$', ''), 10);
 }
 
 function setShareSplit() {
@@ -320,8 +328,8 @@ function setShareSplit() {
   let barIndex = parseInt(activeBar.id.replace("bar", "")) - 1;
   let split = homeSplitOverTime[barIndex];
 
-  $('#casaShareValue').text(moneyFormat(split.casa));
-  $('#yourShareValue').text(moneyFormat(split.you));
+  $('#casaShareValue').text(moneyFormat(split.casa, false));
+  $('#yourShareValue').text(moneyFormat(split.you, false));
 }
 
 function tappedBar(barId) {

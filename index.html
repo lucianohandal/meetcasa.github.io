@@ -26,56 +26,59 @@
   <meta property="og:locale" content="en_US" />
 </head>
 <body onresize="getSectionsOffsets()">
-  <nav id="navbar" class="navbar navbar-expand-sm fixed-top px-lg-5 pb-0 blur-background">
-    <div class="d-flex justify-content-end">
-      <button class="navbar-toggler border-0" type="button" onclick="toggleIcon()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i id="nav_icon" class="fas fa-ellipsis-v"></i>
+  <nav id="navbar" class="navbar fixed-top navbar-expand-md bg-body-tertiary blur-background px-lg-5">
+    <div class="container-fluid">
+      <a class="nav-logo navbar-brand nav-link text-right my-0" onclick="goToSection('home')">
+        <img id="nav-icon" src="static/images/casa_icon.svg" alt="Casa Icon">
+        <img id="nav-logo-text" src="static/images/casa_text.svg" alt="Casa Text">
+      </a>
+      <button id="navbar-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        •••
       </button>
-    </div>
-    <div class="collapse navbar-collapse " id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto align-items-center">
-        <li class="nav-item active pr-3">
-          <a id="nav-logo" class="nav-link text-right m-0" onclick="goToSection('home')">
-            <img id="nav-icon" src="static/images/casa_icon.svg" alt="Casa Icon">
-            <img id="nav-logo-text"  src="static/images/casa_text.svg" alt="Casa Text">
-          </a>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link button-text text-right m-0" onclick="goToSection('how_it_works')">How it Works</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link button-text text-right m-0" onclick="goToSection('what_it_costs')">What it Costs</button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link button-text text-right m-0" onclick="goToSection('faq')">Frequently Asked</button>
-        </li>
-      </ul>
-      <button id="navbar-waitlist-button" type="button" class="btn button-outline" style="display: none;" onclick="goToSection('waitlist')">
-        Join the Waitlist
-      </button>
+      <div class="collapse navbar-collapse d-md-flex w-md-100 justify-content-md-between" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button type="button" class="nav-link button-text text-right m-0" onclick="goToSection('how_it_works')">How it Works</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link button-text text-right m-0" onclick="goToSection('what_it_costs')">What it Costs</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link button-text text-right m-0" onclick="goToSection('faq')">Frequently Asked</button>
+          </li>
+          <li class="nav-item d-md-none">
+            <button type="button" class="nav-link button-text text-right m-0 accent-color" onclick="goToSection('waitlist')">Join the Waitlist</button>
+          </li>
+        </ul>
+        <div class="d-none d-md-block">
+          <button id="navbar-waitlist-button" type="button" class="btn button-outline"  onclick="goToSection('waitlist') "style='display: none;'>
+            Join the Waitlist
+          </button>
+        </div>
+      </div>
     </div>
   </nav>
   <div id="home" class="section d-flex align-items-center">
     <div class="container">
       <div class="row justify-content-md-center">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-md-6">
           <h1 class="m-0">Buy now,</h1>
           <h1>pay never<span class="asterisk">*</span></h1>
-          <h6>No interest.</h6>
-          <h6>No monthly payments.</h6>
-          <h6>No credit score impact.</h6>
+          <h5>No interest.</h5>
+          <h5>No monthly payments.</h5>
+          <h5>No credit score impact.</h5>
         </div>
-        <div class="col-12 col-lg-5 d-flex align-self-end">
-          <div class="card-illustration"><img src="static/images/card.svg" alt="Card Illustration"></div>
+        <div class="col-12 col-md-5 d-flex align-self-end justify-content-end">
+          <div class="card-illustration my-4"><img src="static/images/card.svg" alt="Card Illustration"></div>
         </div>
       </div>
-      <div class="row justify-content-md-center">
-        <div class="col-12 col-lg-6 justify-content-md-start">
-          <button type="button" class="btn button-fill px-5 py-3 my-5" onclick="goToSection('waitlist')">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start">
+          <button type="button" class="btn button-fill px-4 py-2 px-md-5 py-md-3 my-4 my-md-5" onclick="goToSection('waitlist')">
             Join the Waitlist
           </button>
         </div>
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-md-5">
         </div>
       </div>
 
@@ -83,30 +86,34 @@
   </div>
   <div id="how_it_works" class="section d-flex align-items-center">
     <div class="container">
-      <div class="row">
+      <div class="d-flex pl-md-none pl-5">
         <h1><span class="asterisk move-left">*</span></h1>
-        <h2>What’s the catch?<br>It is not a loan, it is money you already have.</h2>
+        <div class="d-flex flex-column ">
+          <h2 class="m-0">What’s the catch?</h2>
+          <p><span>It is not a loan, it is money you already have.</span></p>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-md-4 px-md-2">
+
+      <div class="row mx-3 mb-4">
+        <div class="col-md-4 px-md-2 py-sm-3">
           <div class="info-card">
-            <h5>Add your home to your wallet</h5>
+            <h6 class="text-center text-md-start">Add your home<br>to your wallet</h6>
             <p>We’ll give you cash now in exchange for your home’s future value.</p>
-            <p><span>Just choose the amount.</span></p>
+            <p class="p-0"><span>Just choose the amount.</span></p>
           </div>
         </div>
-        <div class="col-md-4 px-md-2">
+        <div class="col-md-4 px-md-2 py-sm-3">
           <div class="info-card">
-            <h5>Use your card</h5>
+            <h6 class="text-center text-md-start">Use your card</h6>
             <p>Use your Casa Card <span>just like any other</span>—whether it’s for everyday spending or that big purchase you’ve been putting off.</p>
-            <p>You can even pay off your existing debt.</p>
+            <p class="p-0">You can even pay off your existing debt.</p>
           </div>
         </div>
-        <div class="col-md-4 px-md-2">
+        <div class="col-md-4 px-md-2 py-sm-3">
           <div class="info-card">
-            <h5>We earn when you do</h5>
+            <h6 class="text-center text-md-start">We earn<br>when you do</h6>
             <p>We’ll take our cut <span>in 30 years or when you sell.</span></p>
-            <p>Don’t feel like sharing? You can buy us out at anytime. Your house, your rules.</p>
+            <p class="p-0">Don’t feel like sharing? You can buy us out at anytime. Your house, your rules.</p>
           </div>
         </div>
       </div>
@@ -114,7 +121,7 @@
   </div>
   <div id="what_it_costs" class="section d-flex align-items-center">
     <div class="container">
-      <h2>Keep it simple, save money</h2>
+      <h2 class="m-0">Keep it simple, save money</h2>
       <p>Instead of charging interest, our portion of your home’s equity will grow over time, capped at twice our original share.</p>
       <div class="row my-2">
         <div class="col-sm">
