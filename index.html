@@ -297,9 +297,9 @@
     </div>
   </div>
   <div id="waitlist" class="section d-flex align-items-center justify-content-center">
-    <div class="container">
-      <h1 class="text-center">Join the Waitlist</h1>
-      <form id="waitlist_container" action="https://getlaunchlist.com/s/juzVkd"  method="POST" class="mx-auto">
+    <div id="waitlist_container"  class="container">
+      <form id="waitlist_form" action="https://getlaunchlist.com/s/juzVkd"  method="POST" class="mx-auto">
+        <h1 class="text-center">Join the Waitlist</h1>
         <div class="form-group">
           <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
         </div>
@@ -311,11 +311,12 @@
           <p id="waitlist_status"></p>
         </div>
       </form>
+      <div id="waitlist_thx">
+        <h1 class="text-center">Thank you</h1>
+        <p class="text-center">You will be the first one to know when Casa Card is available</p>
+      </div>
     </div>
-    <div id="waitlist_thx">
-      <h1 class="text-center">Thank you</h1>
-      <h3 class="text-center">I will reach out as soon as possible.</h3>
-    </div>
+
 
   </div>
   <script>
