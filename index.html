@@ -26,7 +26,7 @@
   <meta property="og:locale" content="en_US" />
 </head>
 <body onresize="getSectionsOffsets()">
-  <nav id="navbar" class="navbar navbar-expand-sm fixed-top pb-0 blur-background">
+  <nav id="navbar" class="navbar navbar-expand-sm fixed-top px-lg-5 pb-0 blur-background">
     <div class="d-flex justify-content-end">
       <button class="navbar-toggler border-0" type="button" onclick="toggleIcon()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i id="nav_icon" class="fas fa-ellipsis-v"></i>
@@ -56,46 +56,58 @@
     </div>
   </nav>
   <div id="home" class="section d-flex align-items-center">
-    <div class="d-flex flex-row container justify-content-around">
-      <div class="d-flex flex-column pl-5">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-lg-6">
           <h1 class="m-0">Buy now,</h1>
           <h1>pay never<span class="asterisk">*</span></h1>
           <h6>No interest.</h6>
           <h6>No monthly payments.</h6>
           <h6>No credit score impact.</h6>
-          <div>
-            <button type="button" class="btn button-fill px-5 py-3 my-5" onclick="goToSection('waitlist')">
-              Join the Waitlist
-            </button>
-          </div>
-
         </div>
-        <div class="d-flex align-items-center justify-content-center pr-5">
+        <div class="col-12 col-lg-5 d-flex align-self-end">
           <div class="card-illustration"><img src="static/images/card.svg" alt="Card Illustration"></div>
         </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-lg-6 justify-content-md-start">
+          <button type="button" class="btn button-fill px-5 py-3 my-5" onclick="goToSection('waitlist')">
+            Join the Waitlist
+          </button>
+        </div>
+        <div class="col-12 col-lg-5">
+        </div>
+      </div>
+
     </div>
   </div>
   <div id="how_it_works" class="section d-flex align-items-center">
-    <div class="container d-flex flex-column justify-content-around">
-      <div class="d-flex flex-row justify-content-start">
+    <div class="container">
+      <div class="row">
         <h1><span class="asterisk move-left">*</span></h1>
         <h2>What’s the catch?<br>It is not a loan, it is money you already have.</h2>
       </div>
-      <div class="d-flex flex-row justify-content-between info-cards">
-        <div class="info-card">
-          <h5>Add your home to your wallet</h5>
-          <p>We’ll give you cash now in exchange for your home’s future value.</p>
-          <p><span>Just choose the amount.</span></p>
+      <div class="row">
+        <div class="col-md-4 px-md-2">
+          <div class="info-card">
+            <h5>Add your home to your wallet</h5>
+            <p>We’ll give you cash now in exchange for your home’s future value.</p>
+            <p><span>Just choose the amount.</span></p>
+          </div>
         </div>
-        <div class="info-card">
-          <h5>Use your card</h5>
-          <p>Use your Casa Card <span>just like any other</span>—whether it’s for everyday spending or that big purchase you’ve been putting off.</p>
-          <p>You can even pay off your existing debt.</p>
+        <div class="col-md-4 px-md-2">
+          <div class="info-card">
+            <h5>Use your card</h5>
+            <p>Use your Casa Card <span>just like any other</span>—whether it’s for everyday spending or that big purchase you’ve been putting off.</p>
+            <p>You can even pay off your existing debt.</p>
+          </div>
         </div>
-        <div class="info-card">
-          <h5>We earn when you do</h5>
-          <p>We’ll take our cut <span>in 30 years or when you sell.</span></p>
-          <p>Don’t feel like sharing? You can buy us out at anytime. Your house, your rules.</p>
+        <div class="col-md-4 px-md-2">
+          <div class="info-card">
+            <h5>We earn when you do</h5>
+            <p>We’ll take our cut <span>in 30 years or when you sell.</span></p>
+            <p>Don’t feel like sharing? You can buy us out at anytime. Your house, your rules.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -104,117 +116,120 @@
     <div class="container">
       <h2>Keep it simple, save money</h2>
       <p>Instead of charging interest, our portion of your home’s equity will grow over time, capped at twice our original share.</p>
-      <div class="d-flex form-group">
-        <div class="w-100">
-          <p class="m-0"><span>Home Value</span></p>
+      <div class="row my-2">
+        <div class="col-sm">
+          <p class="m-0"><span>Home value</span></p>
           <input type="text" class="form-control money-format" id="homeValue" name="homeValue" placeholder="$550,000" value="500000" min=0 oninput="homeValueCalculatorListener()">
           <small class="input-label pl-2">This is your home equity</small>
         </div>
-        <div class="w-100 mx-2">
+        <div class="col-sm">
           <p class="m-0"><span>Home Share</span></p>
           <input type="text" class="form-control money-format" id="homeShare" name="homeShare" placeholder="$50,000" value="50000" min="0" max="192500" oninput="homeValueCalculatorListener()">
           <small class="input-label pl-2">This is the amount of cash you'll to get from Casa</small>
           <small><span id="homeShareInputErrorMessage">Home Share</span></small>
         </div>
-        <div class="d-flex flex-column justify-content-between w-100">
-          <p class="m-0"><span>Home price appreciation</span></p>
-          <div class="d-flex">
-            <p class="mb-0 mr-1"><span id="appreciation">2%</span></p>
-            <input type="range" class="form-control-range" id="appreciationSlider" name="appreciationSlider" min="-1" max="4" step="1" value="2" oninput="document.getElementById('appreciation').innerText = this.value + '%'" onchange="homeValueCalculatorListener()">
-          </div>
-          <small id="appreciationLabel" class="input-label pl-2">Moderate appreciation</small>
+        <div class="col-sm">
+        <p class="m-0"><span>Home appreciation</span></p>
+        <div id="appreciationDiv" class="d-flex">
+          <p class="mb-0 mr-1"><span id="appreciation">2%</span></p>
+          <input type="range" class="form-control-range" id="appreciationSlider" name="appreciationSlider" min="-1" max="4" step="1" value="2" oninput="document.getElementById('appreciation').innerText = this.value + '%'" onchange="homeValueCalculatorListener()">
+        </div>
+        <small id="appreciationLabel" class="input-label pl-2">Moderate appreciation</small>
         </div>
       </div>
-      <div id="share-graph" class="d-flex">
-        <div id="graph" class="p-0 d-flex flex-column">
-        <div id="bar-graph"  class="d-flex align-items-end">
-          <small class="y-label m-0">HOME VALUE</small>
-          <div onclick="tappedBar(this.id)" id="bar1" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">3</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar2" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">6</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar3" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">9</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar4" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">12</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar5" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">15</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar6" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">18</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar7" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">21</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar8" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">24</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar9" class="progress bg-transparent">
-            <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-            <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
-            <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
-            <small class="text-center m-0">27</small>
-          </div>
-          <div onclick="tappedBar(this.id)" id="bar10" class="progress bg-transparent active-bar">
-          <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
-          <div class="progress-bar bar-yours" role="progressbar" style="height: 0%" ></div>
-          <div class="progress-bar bar-casa" role="progressbar" style="height: 0%" ></div>
-          <small class="text-center m-0">30</small>
-        </div>
-        </div>
-        <small class="text-center">EXIT YEAR</small>
-      </div>
-        <div id="shares" class="p-0 pl-lg-5">
-          <div class="d-flex flex-column justify-content-center h-100">
-            <div id="yourShare" class="info-card w-100 share">
-              <div class="d-flex flex-column">
-                <h3 class="m-0">Your share</h3>
+      <div id="share-graph" class="row my-2">
+        <div class="col-md">
+          <div id="shares" class="p-0 pl-lg-1">
+            <div class="d-flex flex-md-column justify-content-around justify-content-sm-start justify-content-md-center h-100">
+              <div id="yourShare" class="info-card w-100 share mx-0 mx-sm-2 mx-md-0">
+                <div class="d-flex flex-column">
+                  <h3 class="m-0">Your share</h3>
+                    <div class="d-flex flex-row align-items-end ">
+                      <h5>$</h5>
+                      <h4 id="yourShareValue"  class="m-0">906,507</h4>
+                    </div>
+                </div>
+              </div>
+
+              <div id="casaShare" class="info-card w-100 share mx-0 mx-sm-2 mx-md-0">
+                <div class="d-flex flex-column">
+                  <h3 class="m-0">Casa’s share</h3>
                   <div class="d-flex flex-row align-items-end ">
                     <h5>$</h5>
-                    <h4 id="yourShareValue"  class="m-0">906,507</h4>
+                    <h4 id="casaShareValue"  class="m-0">95,158</h4>
                   </div>
-              </div>
-            </div>
-
-            <div id="casaShare" class="info-card w-100 share">
-              <div class="d-flex flex-column">
-                <h3 class="m-0">Casa’s share</h3>
-                <div class="d-flex flex-row align-items-end ">
-                  <h5>$</h5>
-                  <h4 id="casaShareValue"  class="m-0">95,158</h4>
                 </div>
               </div>
             </div>
+        </div>
+        </div>
+        <div class="col-md-8 order-md-first">
+          <div id="graph" class="p-0 d-flex flex-column">
+            <div id="bar-graph"  class="d-flex align-items-end">
+              <small class="y-label m-0">HOME VALUE</small>
+              <div onclick="tappedBar(this.id)" id="bar1" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">3</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar2" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">6</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar3" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">9</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar4" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">12</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar5" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">15</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar6" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">18</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar7" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">21</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar8" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">24</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar9" class="progress bg-transparent">
+                <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+                <div class="progress-bar bar-yours" role="progressbar" style="height: 0%"></div>
+                <div class="progress-bar bar-casa" role="progressbar" style="height: 0%"></div>
+                <small class="text-center m-0">27</small>
+              </div>
+              <div onclick="tappedBar(this.id)" id="bar10" class="progress bg-transparent active-bar">
+              <div class="progress-bar bg-transparent" role="progressbar" style="height: 100%"></div>
+              <div class="progress-bar bar-yours" role="progressbar" style="height: 0%" ></div>
+              <div class="progress-bar bar-casa" role="progressbar" style="height: 0%" ></div>
+              <small class="text-center m-0">30</small>
+            </div>
+            </div>
+            <small class="text-center">EXIT YEAR</small>
           </div>
-
         </div>
       </div>
     </div>
@@ -225,7 +240,7 @@
         <div class="accordion py-5" id="faqAccordion">
           <div class="accordion-item info-card">
             <button class="accordion-button button-text d-flex justify-content-between w-100 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h6 class="m-0">What if I do not want to sell my home after 30 years?</h6>
+              <h6 class="m-0 text-start">What if I do not want to sell my home after 30 years?</h6>
               <i class="fas fa-chevron-down align-self-start"></i>
             </button>
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
@@ -253,7 +268,7 @@
           </div>
           <div class="accordion-item info-card">
             <button class="accordion-button button-text d-flex justify-content-between w-100 p-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseOne">
-              <h6 class="m-0">Am I eligible?</h6>
+              <h6 class="m-0 text-start">Am I eligible?</h6>
               <i class="fas fa-chevron-down align-self-start"></i>
             </button>
             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">

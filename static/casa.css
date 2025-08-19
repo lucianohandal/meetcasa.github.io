@@ -204,25 +204,27 @@ h6 {
   font-weight: 500;
 }
 
-/* Flex layout for share graph */
-#share-graph {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  gap: 1rem;
-}
 
-/* #graph max width = 2/3 of container */
-#graph {
-  flex: 1 1 66.6667%;
-  max-width: 66.6667%;
-}
 
-/* #shares should not resize */
-#shares {
-  flex: 0 0 auto;
-  flex-shrink: 0;
-}
+/*!* Flex layout for share graph *!*/
+/*#share-graph {*/
+/*  display: flex;*/
+/*  flex-wrap: nowrap;*/
+/*  align-items: stretch;*/
+/*  gap: 1rem;*/
+/*}*/
+
+/*!* #graph max width = 2/3 of container *!*/
+/*#graph {*/
+/*  flex: 1 1 66.6667%;*/
+/*  max-width: 66.6667%;*/
+/*}*/
+
+/*!* #shares should not resize *!*/
+/*#shares {*/
+/*  flex: 0 0 auto;*/
+/*  flex-shrink: 0;*/
+/*}*/
 
 .input-label {
   opacity: 60%;
@@ -390,6 +392,7 @@ button{
 .button-text {
   background-color: transparent;
   border: none;
+  text-align: left;
 }
 
 .accordion-button[aria-expanded="true"] {
@@ -562,4 +565,9 @@ button{
 
 #appreciationSlider {
   accent-color: var(--color-cerulean);
+}
+
+#appreciationDiv {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
