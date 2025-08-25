@@ -160,26 +160,6 @@ span {
   color: var(--color-tomato);
 }
 
-
-#hello_arrow {
-  position: absolute;
-  opacity: 0;
-  top: 75vh;
-  width: 100%;
-  animation-duration: 800ms;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes blink {
-  from {
-     opacity: 0;
-  }
-  to {
-     opacity: .5;
-  }
-}
-
 h1 {
   font-size: 3rem;
 }
@@ -371,6 +351,10 @@ button{
   display: flex;
   flex-direction: column;
   opacity: 50%;
+}
+
+.progress-bar {
+  transition: height 0.5s ease-in-out;
 }
 
 .active .nav-link{

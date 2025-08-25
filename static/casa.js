@@ -5,6 +5,7 @@ const maxCost = 1.19;
 const maxHomeShare = 0.45;
 const maxHomeShareAmount = 500_000;
 const multiplier = 2;
+const animationTimeMS = 300;
 const url = document.URL.split("?")[0];
 var current_section = 'home';
 var sectionOffsets = [];
@@ -99,23 +100,6 @@ function goToSection(section_id){
     function(){window.scrollTo(0, location);});
 }
 
-// function typeChar(i) {
-//   hello_h1.innerText = hello_msg.substring(0, i) + '|';
-// }
-
-// function typeHello() {
-//   const rate = 100;
-//   var time;
-//   let msg_length = hello_msg.length;
-//   for (let i = 0; i < msg_length; i++) {
-//     time = i * rate;
-//     setTimeout(function(){ typeChar(i); }, time);
-//   }
-//   time += rate;
-//   setTimeout(function(){hello_h1.innerHTML = hello_msg_html;}, time);
-//   time *= 2;
-// }
-
 function copyToClipboard(str) {
   const tempInput = document.createElement("input");
   tempInput.value = str;
@@ -125,73 +109,6 @@ function copyToClipboard(str) {
   document.execCommand("copy");
   document.body.removeChild(tempInput);
 }
-
-function share(){
-  let share_link = url;
-  if (current_section != 'hello') {
-    share_link += "?" + current_section;
-  }
-  copyToClipboard(share_link);
-  $("#modal_link")[0].innerText = share_link;
-  $("#modal_link")[0].href = share_link;
-}
-
-function hideContact(){
-  $('#contact_container').hide();
-  $('#contact_thx').show();
-}
-
-function toggleIcon() {
-  $('#nav_icon').toggleClass('fa-ellipsis-v');
-  $('#nav_icon').toggleClass('fa-times');
-}
-
-// var form = document.getElementById("contact_form");
-//
-// async function handleSubmit(event) {
-//   event.preventDefault();
-//   var status = document.getElementById("contact_status");
-//   var data = new FormData(event.target);
-//   fetch(event.target.action, {
-//     method: form.method,
-//     body: data,
-//     headers: {
-//         'Accept': 'application/json'
-//     }
-//   }).then(response => {
-//     if (response.ok) {
-//       hideContact();
-//       form.reset()
-//     } else {
-//       response.json().then(data => {
-//         if (Object.hasOwn(data, 'errors')) {
-//           status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-//         } else {
-//           status.innerHTML = "Oops! There was a problem submitting your form"
-//         }
-//       })
-//     }
-//   }).catch(error => {
-//     status.innerHTML = "Oops! There was a problem submitting your form"
-//   });
-// }
-// form.addEventListener("submit", handleSubmit)
-
-// function sendForm(){
-//   event.preventDefault();
-//   $.ajax({
-//     data:{
-//       name: $(contact_form).serializeArray()[0].value,
-//       subject: $(contact_form).serializeArray()[1].value,
-//       email: $(contact_form).serializeArray()[2].value,
-//       message: $(contact_form).serializeArray()[3].value
-//     },
-//     type: "POST",
-//     url: contact_form.action,
-//   });
-//   hideContact();
-//   return false;
-// }
 
 $('.project_div').hover(
   function() {
@@ -214,16 +131,6 @@ function selectTab(id){
 
 }
 
-// function projectSlide(prev=false) {
-//   $(projects[current_project]).removeClass('selected')
-//   if (prev) {
-//     current_project = (current_project + projects.length - 1) % projects.length;
-//   } else {
-//     current_project = (current_project + 1) % projects.length;
-//   }
-//   $(projects[current_project]).addClass('selected')
-// }
-
 $('.navbar-collapse .nav-link').on('click', function(){
     $('.navbar-collapse').collapse('hide');
 });
@@ -241,7 +148,6 @@ function setBarHeights() {
     $('#bar' + barNum + ' .bar-casa').css('height', casaHeight + '%');
     $('#bar' + barNum + ' .bar-yours').css('height', yourHeight + '%');
     $('#bar' + barNum++ + ' .bg-transparent').css('height', emptyHeight + '%');
-    // console.log(split)
   });
 }
 
@@ -253,8 +159,6 @@ function calculateShareValues(){
     let yourShare = Math.round(homeValue * appreciationRate ** year - casaShare);
     homeSplitOverTime.push({"casa":casaShare, "you":yourShare});
   }
-
-  // console.log(homeSplitOverTime);
 }
 
 function homeValueCalculatorListener(){
@@ -322,14 +226,33 @@ function parseMoney(str){
   return parseInt(str.replace(/,/g, '').replace('$', ''), 10);
 }
 
+function animateCounter(selector, finalValue, duration) {
+  let element = $(selector);
+  if (!element.length) return;
+  let start = parseMoney($(selector).text());
+  let startTime = null;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    let progress = Math.min((timestamp - startTime) / duration, 1);
+    let value = Math.floor(start + (finalValue - start) * progress);
+    element.text(moneyFormat(value, false));
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
 function setShareSplit() {
   let activeBar = $('.active-bar')[0];
 
   let barIndex = parseInt(activeBar.id.replace("bar", "")) - 1;
   let split = homeSplitOverTime[barIndex];
 
-  $('#casaShareValue').text(moneyFormat(split.casa, false));
-  $('#yourShareValue').text(moneyFormat(split.you, false));
+  animateCounter('#casaShareValue', split.casa, animationTimeMS)
+  animateCounter('#yourShareValue', split.casa, animationTimeMS)
 }
 
 function tappedBar(barId) {
@@ -347,16 +270,13 @@ window.onscroll = function() {
 
 async function getLocationInfo() {
   try {
-    // Step 1: Get the client IP
     let ipResponse = await fetch("https://api.ipify.org?format=json");
     let ipData = await ipResponse.json();
     let ip = ipData.ip;
 
-    // Step 2: Use IP to get geolocation
     let geoResponse = await fetch(`https://ipapi.co/${ip}/json/`);
     let geoData = await geoResponse.json();
 
-    // Step 3: Build state + country string
     let state = geoData.region;   // e.g. "California"
     let country = geoData.country_name; // e.g. "United States"
     let result = `${state}, ${country}`;
@@ -402,7 +322,6 @@ if (waitlistForm) {
 }
 
 function main() {
-  // typeHello();
   getLocationInfo().then(location => {
     $("#location").val(location);
   });
@@ -410,9 +329,6 @@ function main() {
   scrollNavbar()
   homeValueCalculatorListener()
   colorCoordinate();
-  // if (loc != 'hello') {
-  //   goToSection(loc);
-  // }
 }
 
 $( document ).ready(function() { main() });
