@@ -252,7 +252,7 @@ function setShareSplit() {
   let split = homeSplitOverTime[barIndex];
 
   animateCounter('#casaShareValue', split.casa, animationTimeMS)
-  animateCounter('#yourShareValue', split.casa, animationTimeMS)
+  animateCounter('#yourShareValue', split.you, animationTimeMS)
 }
 
 function tappedBar(barId) {
