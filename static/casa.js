@@ -155,7 +155,7 @@ function calculateShareValues(){
   homeSplitOverTime = [];
 
   for (let year = 3; year <= 30; year += 3) {
-    let casaShare = Math.round(Math.min(maxCost ** year, multiplier) * appreciationRate ** year * homeShare);
+    let casaShare = Math.round(Math.min(maxCost ** year, multiplier * appreciationRate ** year) * homeShare);
     let yourShare = Math.round(homeValue * appreciationRate ** year - casaShare);
     homeSplitOverTime.push({"casa":casaShare, "you":yourShare});
   }
