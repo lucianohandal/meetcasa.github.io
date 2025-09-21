@@ -288,39 +288,6 @@ async function getLocationInfo() {
   }
 }
 
-const waitlistForm = document.getElementById("waitlist_form");
-if (waitlistForm) {
-  waitlistForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    $("#waitlist_form").find("input, button").prop("disabled", true);
-
-    const formData = new FormData(this);
-
-    try {
-      const res = await fetch(this.action, {
-        method: this.method || "POST",
-        body: formData,
-        headers: { Accept: "application/json" }
-      });
-
-      const contentType = res.headers.get("content-type") || "";
-      let payload;
-
-      if (contentType.includes("application/json")) {
-        payload = await res.json();
-      } else {
-        // Fallback for HTML or plain text responses
-        payload = await res.text();
-      }
-      console.log("Success:", payload);
-      $("#waitlist_thx").show();
-      $("#waitlist_form").hide();
-    } catch (err) {
-      console.error("Error submitting form:", err);
-    }
-  });
-}
-
 function main() {
   getLocationInfo().then(location => {
     $("#location").val(location);
